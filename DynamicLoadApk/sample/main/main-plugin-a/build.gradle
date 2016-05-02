@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 
     defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 19
+        minSdkVersion  rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion  rootProject.ext.android["targetSdkVersion"]
     }
 
     buildTypes {
@@ -34,7 +34,7 @@ android {
 
 dependencies {
     provided files('../../../lib/build/libs/lib.jar')
-    provided files('external-jars/android-support-v4.jar')
+    compile rootProject.ext.dependencies["support-v4"]
 }
 
 task beforeBuild(dependsOn: ':lib:buildLib') << {
